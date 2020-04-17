@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-const url = NODE_BACKEND_URL;
+const url = "https://hack-for-hope-backend.herokuapp.com";
 
 const checkStatus = async (res) => {
   if (!res.ok) {
