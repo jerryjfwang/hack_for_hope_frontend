@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as Font from "expo-font";
 import { StyleSheet, Text, View } from "react-native";
 import Signup from "./screens/Signup";
+import { Provider as PaperProvider } from "react-native-paper";
 
 export default class App extends Component {
   state = { fontLoaded: false };
@@ -20,9 +21,11 @@ export default class App extends Component {
         </View>
       );
     return (
-      <View style={styles.container}>
-        <Signup />
-      </View>
+      <PaperProvider>
+        <View style={styles.container}>
+          <Signup />
+        </View>
+      </PaperProvider>
     );
   }
 }
