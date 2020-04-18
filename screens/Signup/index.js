@@ -43,7 +43,6 @@ export default Signup;
 
 const SignupContainer = styled(View)`
   display: flex;
-  background: #7bed9f;
   height: 100%;
   width: 100%;
   position: relative;

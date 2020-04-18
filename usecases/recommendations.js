@@ -1,11 +1,11 @@
 import { makeRequest } from "../utils/request.js";
 
-export const getRecommendation = (
-  latitude,
-  longitude,
-  maxDuration,
-  daysLeft,
-  travelMethod
+export const getRecommendations = (
+  latitude = 34.0407,
+  longitude = -118.2468,
+  maxDuration = 15,
+  daysLeft = 0,
+  travelMethod = "driving"
 ) =>
   makeRequest(
     "GET",
