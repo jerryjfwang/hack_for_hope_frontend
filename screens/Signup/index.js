@@ -3,6 +3,7 @@ import { View } from "react-native";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import Step4 from "./Step3";
 import styled from "styled-components";
 import GroceryStoreBackground from "../../components/GroceryStoreBackground";
 
@@ -30,6 +31,13 @@ const Signup = () => {
       )}
       {stage === 3 && (
         <Step3
+          setStage={setStage}
+          preferences={preferences}
+          setPreferences={setPreferences}
+        />
+      )}
+      {stage === 4 && (
+        <Step4
           setStage={setStage}
           preferences={preferences}
           setPreferences={setPreferences}

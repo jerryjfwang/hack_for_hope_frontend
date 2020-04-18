@@ -48,7 +48,7 @@ const OptionButton = styled(TouchableOpacity)`
     border-radius: 10px;
     background: ${({ active }) => (active ? "#20BF6B" : "#FFFFFF")};
     border: ${({ active }) =>
-      active ? "0px" : "1px solid rgba(170, 170, 170, 0.8"};
+      active ? "0px" : "1px solid rgba(170, 170, 170, 0.8)"};
     width: 100%
     display: flex;
     justify-content: center;
