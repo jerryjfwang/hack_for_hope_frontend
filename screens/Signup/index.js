@@ -11,7 +11,8 @@ const Signup = () => {
   const [preferences, setPreferences] = useState({
     desiredTime: "",
     timeOfDay: "",
-    distance: "",
+    maxDuration: "",
+    travelMethod: "",
   });
 
   return (
