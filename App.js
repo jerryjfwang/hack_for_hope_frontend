@@ -10,6 +10,8 @@ export default class App extends Component {
     await Font.loadAsync({
       Rubik: require("./assets/typefaces/Rubik-Regular.ttf"),
       "Rubik-Bold": require("./assets/typefaces/Rubik-Bold.ttf"),
+      "Rubik-Italic": require("./assets/typefaces/Rubik-Italic.ttf"),
+      "Rubik-BoldItalic": require("./assets/typefaces/Rubik-BoldItalic.ttf"),
     });
     this.setState({ fontLoaded: true });
   }

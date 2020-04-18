@@ -13,7 +13,7 @@ const Signup = () => {
     desiredTime: "",
     timeOfDay: "",
     maxDuration: 15,
-    travelMethod: "",
+    travelMethod: "driving",
   });
 
   return (

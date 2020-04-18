@@ -20,27 +20,34 @@ const Step4 = ({ setStage, preferences, setPreferences }) => (
   />
 );
 
+//Travel function that uses a destructured object to get preferences
 const Travel = ({ preferences, setPreferences }) => {
+  //Two destructured arrays to check if the duration/travel options are t/f
   const [showDurationOptions, setShowDurationOptions] = useState(false);
   const [buttonWidth, setButtonWidth] = useState(0);
+  const [showTravelOptions, setTravelOptions] = useState(false);
 
+  //Func returns:
   return (
+    //View is to retrieve button width for the duration/travel options
     <View
       style={{ marginTop: 12 }}
       onLayout={({ nativeEvent }) => setButtonWidth(nativeEvent.layout.width)}
     >
-      {/* Duration Option */}
+      {/* Duration Option Start*/}
       <DropdownButton
         //When button pressed
         onPress={() =>
-          //Change the current preference to morning
+          //Show dropdown menu
           setShowDurationOptions(true)
         }
       >
+        {/* View for dropdown*/}
+        {/* Views = Div */}
         <View>
           <Icon name="expand-more" size={16} color={"#fff"} />
         </View>
-        {/*  Option will be active when preferences.timeOfDay equal to morning */}
+        {/* For setting preferences with property maxDur to show default/selected minutes */}
         <View>
           <DropdownText>{preferences.maxDuration} minutes</DropdownText>
         </View>
@@ -48,45 +55,130 @@ const Travel = ({ preferences, setPreferences }) => {
           <Icon name="expand-more" size={20} color={"#000"} />
         </View>
       </DropdownButton>
+
       <Menu
+        //Menu by default false (hidden)
         visible={showDurationOptions}
         onDismiss={() => setShowDurationOptions(false)}
+        //Anchor for dropdown
         anchor={<View style={{ width: "100%", height: 5 }} />}
+        //Styling is buttonWidth (see styling below)
         style={{ width: buttonWidth }}
       >
+        {/* Suggestion if pressed will change value of maxDuration*/}
+        {/* 5 Min Button */}
         <Suggestion
           onPress={() => {
             setPreferences((p) => ({ ...p, maxDuration: 5 }));
             setShowDurationOptions(false);
           }}
         >
-          <Text>5 min</Text>
+          <DropdownStyling>5 min</DropdownStyling>
         </Suggestion>
+
         <Divider />
-        <Suggestion>
-          <Text>5 min</Text>
+
+        {/* 15 Min Button */}
+        <Suggestion
+          onPress={() => {
+            setPreferences((p) => ({ ...p, maxDuration: 15 }));
+            setShowDurationOptions(false);
+          }}
+        >
+          <DropdownStyling>15 min</DropdownStyling>
         </Suggestion>
+
         <Divider />
-        <Suggestion>
-          <Text>5 min</Text>
+
+        {/* 30 Min Button */}
+        <Suggestion
+          onPress={() => {
+            setPreferences((p) => ({ ...p, maxDuration: 30 }));
+            setShowDurationOptions(false);
+          }}
+        >
+          <DropdownStyling>30 min</DropdownStyling>
         </Suggestion>
+
         <Divider />
-        <Suggestion>
-          <Text>5 min</Text>
+
+        {/* 45 Min Button */}
+        <Suggestion
+          onPress={() => {
+            setPreferences((p) => ({ ...p, maxDuration: 45 }));
+            setShowDurationOptions(false);
+          }}
+        >
+          <DropdownStyling>45 min</DropdownStyling>
         </Suggestion>
       </Menu>
 
-      {/* Means of Travel Button */}
+      {/* travel method Option Start*/}
       <DropdownButton
-        active={preferences.timeOfDay === "driving"}
+        //When button pressed
         onPress={() =>
-          setPreferences((pref) => ({ ...pref, timeOfDay: "driving" }))
+          //Show dropdown menu
+          setTravelOptions(true)
         }
       >
-        <DropdownText active={preferences.timeOfDay === "driving"}>
-          driving
-        </DropdownText>
+        {/* View for dropdown*/}
+        {/* Views = Div */}
+        <View>
+          <Icon name="expand-more" size={16} color={"#fff"} />
+        </View>
+        {/* For setting preferences with property maxDur to show default/selected minutes */}
+        <View>
+          <DropdownText>{preferences.travelMethod} </DropdownText>
+        </View>
+        <View>
+          <Icon name="expand-more" size={20} color={"#000"} />
+        </View>
       </DropdownButton>
+
+      <Menu
+        //Menu by default false (hidden)
+        visible={showTravelOptions}
+        onDismiss={() => setTravelOptions(false)}
+        //Anchor for dropdown
+        anchor={<View style={{ width: "100%", height: 5 }} />}
+        //Styling is buttonWidth (see styling below)
+        style={{ width: buttonWidth }}
+      >
+        {/* Suggestion if pressed will change value of maxDuration*/}
+        {/* driving Min Button */}
+        <Suggestion
+          onPress={() => {
+            setPreferences((p) => ({ ...p, travelMethod: "driving" }));
+            setTravelOptions(false);
+          }}
+        >
+          <DropdownStyling>driving</DropdownStyling>
+        </Suggestion>
+
+        <Divider />
+
+        {/* biking Button */}
+        <Suggestion
+          onPress={() => {
+            setPreferences((p) => ({ ...p, travelMethod: "biking" }));
+            setTravelOptions(false);
+          }}
+        >
+          <DropdownStyling>biking</DropdownStyling>
+        </Suggestion>
+
+        <Divider />
+
+        {/* walking Button */}
+        <Suggestion
+          onPress={() => {
+            setPreferences((p) => ({ ...p, travelMethod: "walking" }));
+            setTravelOptions(false);
+          }}
+        >
+          <DropdownStyling>walking</DropdownStyling>
+        </Suggestion>
+      </Menu>
     </View>
   );
 };
@@ -100,7 +192,7 @@ const DropdownButton = styled(TouchableOpacity)`
       active ? "0px" : "1px solid rgba(170, 170, 170, 0.8)"};
     width: 100%
     display: flex;
-  flex-direction: row;
+    flex-direction: row;
     justify-content: space-between;
     align-items:center;
     padding: 14px;
@@ -109,6 +201,12 @@ const DropdownButton = styled(TouchableOpacity)`
 const DropdownText = styled(Text)`
   color: ${({ active }) => (active ? "#FFFFFF" : "#000")};
   font-family: Rubik-Bold;
+  text-align: center;
+  font-size: 18px;
+`;
+const DropdownStyling = styled(Text)`
+  color: ${({ active }) => (active ? "#FFFFFF" : "#000")};
+  font-family: Rubik;
   text-align: center;
   font-size: 18px;
 `;
